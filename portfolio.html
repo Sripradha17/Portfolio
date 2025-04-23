@@ -23,7 +23,7 @@
     </div>
 
     <div class="right" id="rightSection">
-      <img class="image" src="person.jpg" />
+      <img class="intro-image" src="person.jpg" />
       <div id="rightContent" class="placeholder"></div>
     </div>
 
@@ -48,7 +48,7 @@
           subDescription: [
             "Java, Python, Web Programing, DBMS, Data structure, Agile, HCI, ReactJS",
           ],
-          imgSrc:"education.gif"
+          imgSrc: "education.gif",
         },
         technicalSkills: {
           title: "My Skills",
@@ -74,7 +74,7 @@
             "WebSocket.io",
             "Windows, Linux",
           ],
-          imgSrc:"technicalSkills.gif"
+          imgSrc: "technicalSkills.gif",
         },
         workExperience: {
           title: "My Work Experience",
@@ -93,7 +93,7 @@
             "Automated UI features for an HR, payroll, and talent management platform using Selenium, Cucumber, and Gherkin.",
             "Performed comprehensive manual testing for the RA1000 product, ensuring complete functional coverage.Gained in-depth knowledge of RA1000 functionality, assisting in product testing and issue resolution.Designed and implemented user interfaces for the hospital admin tool using Angular 8, HTML, and CSS.Conducted knowledge transfer sessions and provided demos to onboard team members and stakeholders.Participated in Agile methodologies, including scrum planning and sprint discussions.",
           ],
-          imgSrc:"workExperience.gif"
+          imgSrc: "workExperience.gif",
         },
         project: {
           title: "My Academic projects",
@@ -109,7 +109,7 @@
             "Created a rental platform allowing New Jersey residents to rent or list properties.Integrated React, Redis, WebSocket.io, and ImageMagick to enhance platform functionality.",
             "Designed an application for gamers to learn about and review video games.Provided features such as game instructions, cheat codes, purchase options, and review capabilities.Employed Agile methodology and utilized JavaScript, Handlebars, and CSS for project development.",
           ],
-          imgSrc:"project.gif"
+          imgSrc: "project.gif",
         },
         contact: {
           title: "My Contact",
@@ -120,7 +120,7 @@
             "sripradhavittalbhat@gmail.com",
             "64 Sherman Pl Jersey City, NJ, 07307",
           ],
-          imgSrc:"contact.gif"
+          imgSrc: "contact.gif",
         },
       };
 
@@ -136,30 +136,53 @@
         const item = content[type];
         if (!item) return;
 
-        let html = `<h2>${item.title}</h2>`;
+        let html = `<h2 class="section-title">${item.title}</h2>`;
 
-        // Handle subtitle and score (mainly for education and workExperience)
-        if (item.subTitile && item.subText) {
-          for (let i = 0; i < item.subTitile.length; i++) {
-            html += `<h3>${item.subTitile[i]}</h3>`;
-            html += `<p>${item.subText[i]}</p>`;
-            if (item.subScore && item.subScore[i]) {
-              html += `<p><strong>Score:</strong> ${item.subScore[i]}</p>`;
-            }
-            if (item.subDescription && item.subDescription[i]) {
-              html += `<p>${item.subDescription[i]}</p>`;
-            }
-          }
-        } else if (item.subText && item.subDescription) {
-          // Handle other sections like technicalSkills, project, contact
-          for (let i = 0; i < item.subText.length; i++) {
-            html += `<p><strong>${item.subText[i]}:</strong> ${item.subDescription[i]}</p>`;
+        html += `<img src="${item.imgSrc}" class="section-image" alt="${type} image" /><br/>`;
+
+        if (item.subTitile || item.subText) {
+          for (let i = 0; i < (item.subTitile || item.subText).length; i++) {
+            const header = item.subTitile ? item.subTitile[i] : item.subText[i];
+            const sub = item.subTitile ? item.subText[i] : "";
+            const score =
+              item.subScore && item.subScore[i]
+                ? `<p><strong>GPA:</strong> ${item.subScore[i]}</p>`
+                : "";
+            const desc =
+              item.subDescription && item.subDescription[i]
+                ? `<p>${item.subDescription[i]}</p>`
+                : "";
+
+            html += `
+              <div class="accordion-item">
+                <button class="accordion-header">${header}</button>
+                <div class="accordion-content">
+                  ${sub ? `<p class="sub-text">${sub}</p>` : ""}
+                  ${score}
+                  ${desc}
+                </div>
+              </div>`;
           }
         }
 
-        html += `<img src=${item.imgSrc}>`
-
         rightContent.innerHTML = html;
+
+        // Exclusive Accordion Logic
+        const headers = document.querySelectorAll(".accordion-header");
+        headers.forEach((header) => {
+          header.addEventListener("click", () => {
+            const allContents = document.querySelectorAll(".accordion-content");
+
+            // Close all
+            allContents.forEach((content) =>
+              content.classList.remove("active")
+            );
+
+            // Open the one clicked
+            const content = header.nextElementSibling;
+            content.classList.add("active");
+          });
+        }); 
       }
     </script>
   </body>

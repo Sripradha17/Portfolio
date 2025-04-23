@@ -43,12 +43,12 @@ body {
 
 .right {
   width: 50%;
-  background: radial-gradient(circle, #ffffff, #67aec6);
+  background: radial-gradient(circle, #212a91, #011116);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 40px;
+  padding: 60px;
   text-align: center;
   box-shadow: -2px 0 15px rgba(0, 0, 0, 0.2);
   overflow-y: auto;
@@ -59,11 +59,11 @@ body {
   cursor: default;
 }
 
-.expanded .right .image {
+.expanded .right .intro-image {
   display: none;
 }
 
-.right .image {
+.right .intro-image {
   max-width: 100%;
   max-height: 100%;
 }
@@ -111,7 +111,7 @@ h1 {
 
 .right h2 {
   font-size: 2rem;
-  color: #333;
+  color: #f8f2f2;
 }
 
 .right p {
@@ -120,11 +120,11 @@ h1 {
   margin-bottom: 20px;
 }
 
-.right img {
+.intro-image {
   width: 80%;
   height: 80%;
   margin-top: 15px;
-  border-radius: 15px;
+  border-radius: 15px;  
   animation: float 3s ease-in-out infinite;
 }
 
@@ -143,57 +143,56 @@ h1 {
   color: #666;
 }
 
-
-/* Right Section Content Styling */
-#rightContent h2 {
-  font-size: 2.2rem;
-  color: #0d0101;
-  margin-bottom: 20px;
-  text-shadow: 1px 1px 3px #000;
-}
-
-#rightContent h3 {
-  font-size: 1.5rem;
-  color: #0e0b5e;
-  margin-top: 20px;
+.accordion-item {
+  border: 1px solid #ccc;
   margin-bottom: 10px;
-  text-shadow: 1px 1px 2px #000;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
-#rightContent p {
-  font-size: 1rem;
-  color: #360202;
-  line-height: 1.6;
-  margin-bottom: 10px;
-  padding: 0 10px;
+.accordion-header {
+  width: 100%;
+  padding: 12px 16px;
+  text-align: left;
+  background-color: #74a4c6;
+  color: white;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  box-shadow: #3498db 20px;
 }
 
-/* Emphasize score and labels */
-#rightContent p strong {
-  color: #091112;
+.accordion-header:hover {
+  background-color: #31a713;
 }
 
-/* Make links like LinkedIn clickable */
-#rightContent a {
-  color: #030c11;
-  text-decoration: none;
+.accordion-content {
+  padding: 0 16px;
+  max-height: 0;
+  overflow: hidden;
+  background: #f9f9f9;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  box-shadow: #3498db 20px;
 }
 
-#rightContent a:hover {
-  text-decoration: underline;
+.accordion-content.active {
+  padding: 20px;
+  max-height: 300px; /* adjust as needed or use scroll */
+  box-shadow: #3498db 20px;
+
 }
 
-/* For a clean block appearance per entry */
-#rightContent div.entry {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 15px;
-  margin-bottom: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
+.sub-text {
+  color: #0b0a0a;
+  margin: 0.5rem 0;
 }
 
-#rightContent img {
-  width: 45%;
-  height: 25%;
+.section-image{
+  width: 50%;
+  height:auto;
   border: 2px;
+  margin-bottom: 20px;
 }
