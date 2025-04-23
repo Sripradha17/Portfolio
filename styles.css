@@ -32,13 +32,13 @@ body {
   box-shadow: 2px 0 15px rgba(0, 0, 0, 0.2);
 }
 
-.left .clickMeImage{
-    width: 50%;
-    height: 50%;
+.left .clickMeImage {
+  width: 50%;
+  height: 50%;
 }
 
-.expanded .left .clickMeImage{
-    display: none;
+.expanded .left .clickMeImage {
+  display: none;
 }
 
 .right {
@@ -48,7 +48,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 60px;
+  padding-top: 10%;
   text-align: center;
   box-shadow: -2px 0 15px rgba(0, 0, 0, 0.2);
   overflow-y: auto;
@@ -124,7 +124,7 @@ h1 {
   width: 80%;
   height: 80%;
   margin-top: 15px;
-  border-radius: 15px;  
+  border-radius: 15px;
   animation: float 3s ease-in-out infinite;
 }
 
@@ -145,10 +145,10 @@ h1 {
 
 .accordion-item {
   border: 1px solid #ccc;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
   border-radius: 5px;
   overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 13px 11px 20px 1px #89f7fe;
 }
 
 .accordion-header {
@@ -162,7 +162,6 @@ h1 {
   outline: none;
   cursor: pointer;
   transition: background-color 0.3s;
-  box-shadow: #3498db 20px;
 }
 
 .accordion-header:hover {
@@ -175,14 +174,11 @@ h1 {
   overflow: hidden;
   background: #f9f9f9;
   transition: max-height 0.3s ease, padding 0.3s ease;
-  box-shadow: #3498db 20px;
 }
 
 .accordion-content.active {
   padding: 20px;
   max-height: 300px; /* adjust as needed or use scroll */
-  box-shadow: #3498db 20px;
-
 }
 
 .sub-text {
@@ -190,9 +186,9 @@ h1 {
   margin: 0.5rem 0;
 }
 
-.section-image{
+.section-image {
   width: 50%;
-  height:auto;
+  height: auto;
   border: 2px;
   margin-bottom: 20px;
 }
