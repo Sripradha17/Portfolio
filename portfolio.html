@@ -12,9 +12,12 @@
       <h1>Welcome! to Sripradh's Portfolio</h1>
       <img class="clickMeImage" src="clickMe.gif" />
       <div class="buttons" id="buttonsContainer">
-        <button onclick="showContent('eductaion')">Education</button>
-        <button onclick="showContent('skills')">Skills</button>
-        <button onclick="showContent('projects')">Projects</button>
+        <button onclick="showContent('education')">Education</button>
+        <button onclick="showContent('technicalSkills')">
+          Technical Skills
+        </button>
+        <button onclick="showContent('workExperience')">Work experience</button>
+        <button onclick="showContent('project')">Project</button>
         <button onclick="showContent('contact')">Contact</button>
       </div>
     </div>
@@ -45,6 +48,7 @@
           subDescription: [
             "Java, Python, Web Programing, DBMS, Data structure, Agile, HCI, ReactJS",
           ],
+          imgSrc:"education.gif"
         },
         technicalSkills: {
           title: "My Skills",
@@ -70,6 +74,7 @@
             "WebSocket.io",
             "Windows, Linux",
           ],
+          imgSrc:"technicalSkills.gif"
         },
         workExperience: {
           title: "My Work Experience",
@@ -88,6 +93,7 @@
             "Automated UI features for an HR, payroll, and talent management platform using Selenium, Cucumber, and Gherkin.",
             "Performed comprehensive manual testing for the RA1000 product, ensuring complete functional coverage.Gained in-depth knowledge of RA1000 functionality, assisting in product testing and issue resolution.Designed and implemented user interfaces for the hospital admin tool using Angular 8, HTML, and CSS.Conducted knowledge transfer sessions and provided demos to onboard team members and stakeholders.Participated in Agile methodologies, including scrum planning and sprint discussions.",
           ],
+          imgSrc:"workExperience.gif"
         },
         project: {
           title: "My Academic projects",
@@ -103,6 +109,7 @@
             "Created a rental platform allowing New Jersey residents to rent or list properties.Integrated React, Redis, WebSocket.io, and ImageMagick to enhance platform functionality.",
             "Designed an application for gamers to learn about and review video games.Provided features such as game instructions, cheat codes, purchase options, and review capabilities.Employed Agile methodology and utilized JavaScript, Handlebars, and CSS for project development.",
           ],
+          imgSrc:"project.gif"
         },
         contact: {
           title: "My Contact",
@@ -113,6 +120,7 @@
             "sripradhavittalbhat@gmail.com",
             "64 Sherman Pl Jersey City, NJ, 07307",
           ],
+          imgSrc:"contact.gif"
         },
       };
 
@@ -126,11 +134,32 @@
 
       function showContent(type) {
         const item = content[type];
-        rightContent.innerHTML = `
-          <h2>${item.title}</h2>
-          <p>${item.text}</p>
-          <img src="${item.image}" alt="${item.title}">
-        `;
+        if (!item) return;
+
+        let html = `<h2>${item.title}</h2>`;
+
+        // Handle subtitle and score (mainly for education and workExperience)
+        if (item.subTitile && item.subText) {
+          for (let i = 0; i < item.subTitile.length; i++) {
+            html += `<h3>${item.subTitile[i]}</h3>`;
+            html += `<p>${item.subText[i]}</p>`;
+            if (item.subScore && item.subScore[i]) {
+              html += `<p><strong>Score:</strong> ${item.subScore[i]}</p>`;
+            }
+            if (item.subDescription && item.subDescription[i]) {
+              html += `<p>${item.subDescription[i]}</p>`;
+            }
+          }
+        } else if (item.subText && item.subDescription) {
+          // Handle other sections like technicalSkills, project, contact
+          for (let i = 0; i < item.subText.length; i++) {
+            html += `<p><strong>${item.subText[i]}:</strong> ${item.subDescription[i]}</p>`;
+          }
+        }
+
+        html += `<img src=${item.imgSrc}>`
+
+        rightContent.innerHTML = html;
       }
     </script>
   </body>
