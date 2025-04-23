@@ -1,1 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio | Sripradha Vittal Bhat</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
+  <body>
+    <div class="left" id="leftSection">
+      <h1>Welcome! to Sripradh's Portfolio</h1>
+      <img class="clickMeImage" src="clickMe.gif" />
+      <div class="buttons" id="buttonsContainer">
+        <button onclick="showContent('eductaion')">Education</button>
+        <button onclick="showContent('skills')">Skills</button>
+        <button onclick="showContent('projects')">Projects</button>
+        <button onclick="showContent('contact')">Contact</button>
+      </div>
+    </div>
+
+    <div class="right" id="rightSection">
+      <img class="image" src="person.jpg" />
+      <div id="rightContent" class="placeholder"></div>
+    </div>
+
+    <script>
+      const leftSection = document.getElementById("leftSection");
+      const body = document.body;
+      const rightContent = document.getElementById("rightContent");
+      const rightSection = document.getElementById("rightSection");
+
+      const content = {
+        education: {
+          title: "My Education",
+          subTitile: [
+            "Stevens Institute of Technology, Hoboken, NJ",
+            "Nitte Meenakshi Institute of Technology, Karnataka, India",
+          ],
+          subText: [
+            "Master of Science in Computer Science | May 2023",
+            "Bachelor of Engineering in Electronics and Communication | June 2018",
+          ],
+          subScore: ["3.601 GPA", "7.98 GPA"],
+          subDescription: [
+            "Java, Python, Web Programing, DBMS, Data structure, Agile, HCI, ReactJS",
+          ],
+        },
+        technicalSkills: {
+          title: "My Skills",
+          subText: [
+            "Programing Languages",
+            "Framework and Libraries",
+            "Scripting",
+            "Web development tools",
+            "Testing tools",
+            "Version control and CI/CD",
+            "Database",
+            "Communication tools",
+            "Operating system",
+          ],
+          subDescription: [
+            "C, Java, Python, JavaScript",
+            "ReactJS, Angular 8",
+            "TypeScript, Shell scripting",
+            "HTML, CSS",
+            "Selenium, Cucumber, Gherkin, Playwright",
+            "Bitbucket, Jenkins",
+            "Redis",
+            "WebSocket.io",
+            "Windows, Linux",
+          ],
+        },
+        workExperience: {
+          title: "My Work Experience",
+          subTitile: [
+            "Automatic Data Processing, Inc. (ADP) | Florham Park, NJ",
+            "Automatic Data Processing, Inc. (ADP) | Parsippany, NJ",
+            "GE Healthcare | Karnataka, India",
+          ],
+          subText: [
+            "Associate Application Developer | June 2023 – Present",
+            "Global Product and Technology Intern | April 2019 – August 2021",
+            "Software Engineer Specialist | April 2019 – August 2021",
+          ],
+          subDescription: [
+            "Conducted UI and API automation testing using Cucumber, JavaScript, Selenium, Playwright, and Jenkins.Maintained and updated test scenarios to ensure comprehensive coverage and traceability.Developed functionality testing processes and provided demo sessions to team members.Contributed to application development using React, XML, Shell scripting, and integrated solutions via Jenkins, Jira, and Bitbucket.Worked on critical projects such as RUN Payroll Solutions and Embedded RUN Payroll Solutions.Actively engaged in Agile methodologies, including daily stand-ups, sprint planning, and retrospectives.",
+            "Automated UI features for an HR, payroll, and talent management platform using Selenium, Cucumber, and Gherkin.",
+            "Performed comprehensive manual testing for the RA1000 product, ensuring complete functional coverage.Gained in-depth knowledge of RA1000 functionality, assisting in product testing and issue resolution.Designed and implemented user interfaces for the hospital admin tool using Angular 8, HTML, and CSS.Conducted knowledge transfer sessions and provided demos to onboard team members and stakeholders.Participated in Agile methodologies, including scrum planning and sprint discussions.",
+          ],
+        },
+        project: {
+          title: "My Academic projects",
+          subText: [
+            "Pacman Game | Stevens Institute of Technology | December 2021",
+            "Playmore | Stevens Institute of Technology | December 2021",
+            "NJRental | Stevens Institute of Technology | December 2022",
+            "Game Over | Stevens Institute of Technology | December 2022",
+          ],
+          subDescription: [
+            "Developed a fully functional Pacman game using Java programming.",
+            "Built a website to assist users in booking playgrounds for sports activities.Implemented features to host matches and select sports using JavaScript, Handlebars, and CSS.",
+            "Created a rental platform allowing New Jersey residents to rent or list properties.Integrated React, Redis, WebSocket.io, and ImageMagick to enhance platform functionality.",
+            "Designed an application for gamers to learn about and review video games.Provided features such as game instructions, cheat codes, purchase options, and review capabilities.Employed Agile methodology and utilized JavaScript, Handlebars, and CSS for project development.",
+          ],
+        },
+        contact: {
+          title: "My Contact",
+          subText: ["LinkedIn", "Phone number", "Email", "Address"],
+          subDescription: [
+            "https://www.linkedin.com/in/sripradha-v-bhat/",
+            "201-736-5849",
+            "sripradhavittalbhat@gmail.com",
+            "64 Sherman Pl Jersey City, NJ, 07307",
+          ],
+        },
+      };
+
+      leftSection.addEventListener("click", () => {
+        if (!body.classList.contains("expanded")) {
+          body.classList.add("expanded");
+          document.getElementById("buttonsContainer").style.display = "flex";
+          document.getElementById("rightSection").style.display = "flex";
+        }
+      });
+
+      function showContent(type) {
+        const item = content[type];
+        rightContent.innerHTML = `
+          <h2>${item.title}</h2>
+          <p>${item.text}</p>
+          <img src="${item.image}" alt="${item.title}">
+        `;
+      }
+    </script>
+  </body>
+</html>
