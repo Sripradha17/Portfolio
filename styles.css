@@ -1,194 +1,220 @@
+/* Apply border-box model so padding and border are included in element's total size */
 * {
   box-sizing: border-box;
 }
 
+/* Style for the entire body of the page */
 body {
-  margin: 0;
-  font-family: "Segoe UI", sans-serif;
-  display: flex;
-  height: 100vh;
-  overflow: hidden;
-  align-content: center;
-  background: linear-gradient(135deg, #89f7fe, #66a6ff);
+  margin: 0; /* Remove default margin around the body */
+  font-family: "Segoe UI", sans-serif; /* Set clean, modern font */
+  display: flex; /* Use flex layout to place left and right sections side by side */
+  height: 100vh; /* Make the body full height of the viewport */
+  overflow: hidden; /* Prevent scrollbars from appearing */
+  align-content: center; /* Align content along cross axis */
+  background: linear-gradient(135deg, #89f7fe, #66a6ff); /* Diagonal gradient background */
 }
 
+/* Shared styles for both left and right container sections */
 .left,
 .right {
-  transition: all 0.6s ease-in-out;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-  padding: 5%;
+  transition: all 0.6s ease-in-out; /* Smooth transition for property changes */
+  height: 100%; /* Full vertical height */
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+  padding: 5%; /* Space inside the container */
 }
 
+/* Left section container */
 .left {
-  background: white;
-  width: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  cursor: pointer;
-  box-shadow: 2px 0 15px rgba(0, 0, 0, 0.2);
+  background: white; /* White background for contrast */
+  width: 50%; /* Takes half of the screen width */
+  display: flex; /* Flex layout for internal elements */
+  align-items: center; /* Vertical centering */
+  justify-content: center; /* Horizontal centering */
+  flex-direction: column; /* Stack children vertically */
+  cursor: pointer; /* Change cursor to pointer (clickable) */
+  box-shadow: 2px 0 15px rgba(0, 0, 0, 0.2); /* Right side shadow for depth */
 }
 
+/* Image inside the left section */
 .left .clickMeImage {
-  width: 50%;
-  height: 50%;
+  width: 50%; /* Responsive width */
+  height: 50%; /* Responsive height */
 }
 
+/* Hide the image in left section when expanded class is added */
 .expanded .left .clickMeImage {
   display: none;
 }
 
+/* Right section container */
 .right {
-  width: 50%;
-  background: radial-gradient(circle, #212a91, #011116);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding-top: 10%;
-  text-align: center;
-  box-shadow: -2px 0 15px rgba(0, 0, 0, 0.2);
-  overflow-y: auto;
+  width: 50%; /* Takes half of the screen */
+  background: radial-gradient(circle, #212a91, #011116); /* Dark radial background */
+  display: flex; /* Flex layout */
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+  padding-top: 10%; /* Push content down a bit */
+  text-align: center; /* Center align all text */
+  box-shadow: -2px 0 15px rgba(0, 0, 0, 0.2); /* Left side shadow */
+  overflow-y: auto; /* Allow vertical scrolling */
 }
 
+/* Expanded view of left section (for interactivity) */
 .expanded .left {
-  width: 50%;
-  cursor: default;
+  width: 50%; /* Still 50% width */
+  cursor: default; /* Change cursor back to default */
 }
 
+/* Hide image in right section when expanded */
 .expanded .right .intro-image {
   display: none;
 }
 
+/* Image shown in right section */
 .right .intro-image {
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 100%; /* Limit image to container width */
+  max-height: 100%; /* Limit image to container height */
 }
 
+/* Main heading */
 h1 {
-  font-size: 3rem;
-  margin: 0;
-  color: #333;
-  text-shadow: 1px 1px 2px #fff;
-  align-content: center;
-  justify-content: center;
+  font-size: 3rem; /* Large font size */
+  margin: 0; /* No margin around the heading */
+  color: #333; /* Dark gray color */
+  text-shadow: 1px 1px 2px #fff; /* White shadow for clarity */
+  align-content: center; /* Align content */
+  justify-content: center; /* Center content */
 }
 
+/* Container for buttons (initially hidden) */
 .buttons {
-  display: none;
-  margin-top: 30px;
-  gap: 15px;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: none; /* Hidden by default */
+  margin-top: 30px; /* Space above buttons */
+  gap: 15px; /* Space between buttons */
+  flex-direction: row; /* Align buttons in a row */
+  flex-wrap: wrap; /* Allow buttons to wrap to next line */
+  justify-content: center; /* Center align buttons */
 }
 
+/* Button styles */
 .buttons button {
-  padding: 15px 25px;
-  font-size: 16px;
-  background: linear-gradient(to right, #0e0863, #0c1e6e);
-  border: none;
-  border-radius: 10px;
-  color: #fff;
-  font-weight: bold;
-  margin: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  cursor: pointer;
+  padding: 15px 25px; /* Button padding */
+  font-size: 16px; /* Medium font size */
+  background: linear-gradient(to right, #0e0863, #0c1e6e); /* Gradient background */
+  border: none; /* Remove default border */
+  border-radius: 10px; /* Rounded corners */
+  color: #fff; /* White text */
+  font-weight: bold; /* Bold text */
+  margin: 10px; /* Space around each button */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth animations */
+  cursor: pointer; /* Hand cursor */
 }
 
+/* Hover effect for buttons */
 .buttons button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-3px); /* Move button slightly up */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow */
 }
 
+/* Show buttons when expanded class is applied */
 .expanded .buttons {
   display: flex;
 }
 
+/* Subheading in right section */
 .right h2 {
-  font-size: 2rem;
-  color: #f8f2f2;
+  font-size: 2rem; /* Medium-large heading */
+  color: #f8f2f2; /* Light off-white color */
 }
 
+/* Paragraph text in right section */
 .right p {
-  font-size: 1.1rem;
-  color: #444;
-  margin-bottom: 20px;
+  font-size: 1.1rem; /* Slightly larger than normal text */
+  color: #444; /* Dark gray text */
+  margin-bottom: 20px; /* Space below paragraph */
 }
 
+/* Floating image (used as visual intro) */
 .intro-image {
-  width: 80%;
+  width: 80%; /* Responsive size */
   height: 80%;
-  margin-top: 15px;
-  border-radius: 15px;
-  animation: float 3s ease-in-out infinite;
+  margin-top: 15px; /* Space above image */
+  border-radius: 15px; /* Rounded corners */
+  animation: float 3s ease-in-out infinite; /* Apply float animation */
 }
 
+/* Animation for floating effect */
 @keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
+  0%, 100% {
+    transform: translateY(0); /* Original position */
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-10px); /* Move up by 10px */
   }
 }
 
+/* Placeholder text style (if content is empty) */
 .placeholder {
-  font-size: 1.3rem;
-  color: #666;
+  font-size: 1.3rem; /* Larger placeholder font */
+  color: #666; /* Medium gray text */
 }
 
+/* Accordion item container */
 .accordion-item {
-  border: 1px solid #ccc;
-  margin-bottom: 25px;
-  border-radius: 5px;
-  overflow: hidden;
-  box-shadow: 13px 11px 20px 1px #89f7fe;
+  border: 1px solid #ccc; /* Light border */
+  margin-bottom: 25px; /* Space below each accordion */
+  border-radius: 5px; /* Rounded edges */
+  overflow: hidden; /* Hide overflow */
+  box-shadow: 13px 11px 20px 1px #89f7fe; /* Colorful box shadow */
 }
 
+/* Header part of accordion (clickable area) */
 .accordion-header {
-  width: 100%;
-  padding: 12px 16px;
-  text-align: left;
-  background-color: #74a4c6;
-  color: white;
-  font-weight: bold;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  transition: background-color 0.3s;
+  width: 100%; /* Full width */
+  padding: 12px 16px; /* Inner spacing */
+  text-align: left; /* Align text to left */
+  background-color: #74a4c6; /* Light blue background */
+  color: white; /* White text */
+  font-weight: bold; /* Bold font */
+  border: none; /* No default border */
+  outline: none; /* Remove outline */
+  cursor: pointer; /* Pointer cursor */
+  transition: background-color 0.3s; /* Smooth hover effect */
 }
 
+/* Hover style for accordion headers */
 .accordion-header:hover {
-  background-color: #31a713;
+  background-color: #31a713; /* Change to green on hover */
 }
 
+/* Accordion content area (hidden by default) */
 .accordion-content {
-  padding: 0 16px;
-  max-height: 0;
-  overflow: hidden;
-  background: #f9f9f9;
-  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0 16px; /* Horizontal padding */
+  max-height: 0; /* Hide with 0 height */
+  overflow: hidden; /* Hide extra content */
+  background: #f9f9f9; /* Light background */
+  transition: max-height 0.3s ease, padding 0.3s ease; /* Animate open/close */
 }
 
+/* Accordion content when active (opened) */
 .accordion-content.active {
-  padding: 20px;
-  max-height: 300px; /* adjust as needed or use scroll */
+  padding: 20px; /* Add padding when shown */
+  max-height: 300px; /* Limit max height (can be scrolled) */
 }
 
+/* Subtext inside accordion */
 .sub-text {
-  color: #0b0a0a;
-  margin: 0.5rem 0;
+  color: #0b0a0a; /* Dark gray text */
+  margin: 0.5rem 0; /* Vertical spacing */
 }
 
+/* Image inside sections (like examples) */
 .section-image {
-  width: 50%;
-  height: auto;
-  border: 2px;
-  margin-bottom: 20px;
+  width: 50%; /* Half width */
+  height: auto; /* Keep aspect ratio */
+  border: 2px; /* Missing border-style and color */
+  margin-bottom: 20px; /* Space below image */
 }

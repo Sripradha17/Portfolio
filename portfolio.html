@@ -1,67 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html> <!-- Declares the document as an HTML5 document -->
+
+<html lang="en"> <!-- Root element of the HTML document; lang='en' sets the language to English -->
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio | Sripradha Vittal Bhat</title>
-    <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8" /> <!-- Specifies the character encoding for the HTML document -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Enables responsive behavior on mobile devices -->
+    <title>Portfolio | Sripradha Vittal Bhat</title> <!-- Title displayed in the browser tab -->
+    <link rel="stylesheet" href="styles.css" /> <!-- Links an external CSS file for styling the page -->
   </head>
 
-  <body>
-    <div class="left" id="leftSection">
-      <h1>Welcome! to Sripradha's Portfolio</h1>
-      <img class="clickMeImage" src="clickMe.gif" />
-      <div class="buttons" id="buttonsContainer">
-        <button onclick="showContent('education')">Education</button>
-        <button onclick="showContent('technicalSkills')">
-          Technical Skills
-        </button>
-        <button onclick="showContent('workExperience')">Work experience</button>
-        <button onclick="showContent('project')">Project</button>
-        <button onclick="showContent('contact')">Contact</button>
+  <body> <!-- Body tag contains the content that is rendered on the web page -->
+
+    <!-- LEFT PANEL: Holds the welcome message, animated image, and navigation buttons -->
+    <div class="left" id="leftSection"> <!-- A division for the left section of the layout -->
+      <h1>Welcome! to Sripradha's Portfolio</h1> <!-- Heading text -->
+      <img class="clickMeImage" src="clickMe.gif" /> <!-- Animated GIF to draw user attention -->
+      
+      <!-- Button section with individual navigation buttons for each portfolio section -->
+      <div class="buttons" id="buttonsContainer"> <!-- A container for section buttons -->
+        <button onclick="showContent('education')">Education</button> <!-- Triggers the education section -->
+        <button onclick="showContent('technicalSkills')">Technical Skills</button> <!-- Triggers technical skills section -->
+        <button onclick="showContent('workExperience')">Work experience</button> <!-- Triggers work experience section -->
+        <button onclick="showContent('project')">Project</button> <!-- Triggers project section -->
+        <button onclick="showContent('contact')">Contact</button> <!-- Triggers contact section -->
       </div>
     </div>
 
-    <div class="right" id="rightSection">
-      <img class="intro-image" src="person.jpg" />
-      <div id="rightContent" class="placeholder"></div>
+    <!-- RIGHT PANEL: Displays the profile picture and dynamically injected content -->
+    <div class="right" id="rightSection"> <!-- A division for the right section -->
+      <img class="intro-image" src="person.jpg" /> <!-- Profile or intro image -->
+      <div id="rightContent" class="placeholder"></div> <!-- Placeholder where dynamic content will be inserted -->
     </div>
 
+    <!-- JAVASCRIPT FOR INTERACTIVITY -->
     <script>
-      const leftSection = document.getElementById("leftSection");
-      const body = document.body;
-      const rightContent = document.getElementById("rightContent");
-      const rightSection = document.getElementById("rightSection");
+      // DOM element references for interactivity
+      const leftSection = document.getElementById("leftSection"); // Left section reference
+      const body = document.body; // Entire body element
+      const rightContent = document.getElementById("rightContent"); // Right content display area
+      const rightSection = document.getElementById("rightSection"); // Right section wrapper
 
+      // Content data structure: stores all information for different portfolio sections
       const content = {
+        // Education section
         education: {
-          subTitile: [
+          subTitile: [ // Titles for each educational institution
             "Stevens Institute of Technology, Hoboken, NJ",
             "Nitte Meenakshi Institute of Technology, Karnataka, India",
           ],
-          subText: [
+          subText: [ // Degree names and graduation dates
             "Master of Science in Computer Science | May 2023",
             "Bachelor of Engineering in Electronics and Communication | June 2018",
           ],
-          subScore: ["3.601 GPA", "7.98 GPA"],
-          subDescription: [
+          subScore: ["3.601 GPA", "7.98 GPA"], // Academic scores (GPAs)
+          subDescription: [ // Courses and subjects studied
             "Java, Python, Web Programing, DBMS, Data structure, Agile, HCI, ReactJS",
           ],
-          imgSrc: "education.gif",
+          imgSrc: "education.gif", // Associated section image
         },
+
+        // Technical skills section
         technicalSkills: {
-          subText: [
-            "Programing Languages",
-            "Framework and Libraries",
-            "Scripting",
-            "Web development tools",
-            "Testing tools",
-            "Version control and CI/CD",
-            "Database",
-            "Communication tools",
-            "Operating system",
+          subText: [ // Skill categories
+            "Programing Languages", "Framework and Libraries", "Scripting",
+            "Web development tools", "Testing tools", "Version control and CI/CD",
+            "Database", "Communication tools", "Operating system",
           ],
-          subDescription: [
+          subDescription: [ // Skills under each category
             "C, Java, Python, JavaScript",
             "ReactJS, Angular 8",
             "TypeScript, Shell scripting",
@@ -74,42 +78,48 @@
           ],
           imgSrc: "technicalSkills.gif",
         },
+
+        // Work experience section
         workExperience: {
-          subTitile: [
+          subTitile: [ // Job roles and locations
             "Automatic Data Processing, Inc. (ADP) | Florham Park, NJ",
             "Automatic Data Processing, Inc. (ADP) | Parsippany, NJ",
             "GE Healthcare | Karnataka, India",
           ],
-          subText: [
+          subText: [ // Job titles and time periods
             "Associate Application Developer | June 2023 – Present",
             "Global Product and Technology Intern | April 2019 – August 2021",
             "Software Engineer Specialist | April 2019 – August 2021",
           ],
-          subDescription: [
-            "Conducted UI and API automation testing using Cucumber, JavaScript, Selenium, Playwright, and Jenkins.Maintained and updated test scenarios to ensure comprehensive coverage and traceability.Developed functionality testing processes and provided demo sessions to team members.Contributed to application development using React, XML, Shell scripting, and integrated solutions via Jenkins, Jira, and Bitbucket.Worked on critical projects such as RUN Payroll Solutions and Embedded RUN Payroll Solutions.Actively engaged in Agile methodologies, including daily stand-ups, sprint planning, and retrospectives.",
-            "Automated UI features for an HR, payroll, and talent management platform using Selenium, Cucumber, and Gherkin.",
-            "Performed comprehensive manual testing for the RA1000 product, ensuring complete functional coverage.Gained in-depth knowledge of RA1000 functionality, assisting in product testing and issue resolution.Designed and implemented user interfaces for the hospital admin tool using Angular 8, HTML, and CSS.Conducted knowledge transfer sessions and provided demos to onboard team members and stakeholders.Participated in Agile methodologies, including scrum planning and sprint discussions.",
+          subDescription: [ // Job responsibilities
+            "Conducted UI and API automation testing using Cucumber, JavaScript...",
+            "Automated UI features for an HR, payroll, and talent management platform...",
+            "Performed comprehensive manual testing for the RA1000 product...",
           ],
           imgSrc: "workExperience.gif",
         },
+
+        // Project section
         project: {
-          subText: [
+          subText: [ // Project titles with dates
             "Pacman Game | Stevens Institute of Technology | December 2021",
             "Playmore | Stevens Institute of Technology | December 2021",
             "NJRental | Stevens Institute of Technology | December 2022",
             "Game Over | Stevens Institute of Technology | December 2022",
           ],
-          subDescription: [
-            "Developed a fully functional Pacman game using Java programming.",
-            "Built a website to assist users in booking playgrounds for sports activities.Implemented features to host matches and select sports using JavaScript, Handlebars, and CSS.",
-            "Created a rental platform allowing New Jersey residents to rent or list properties.Integrated React, Redis, WebSocket.io, and ImageMagick to enhance platform functionality.",
-            "Designed an application for gamers to learn about and review video games.Provided features such as game instructions, cheat codes, purchase options, and review capabilities.Employed Agile methodology and utilized JavaScript, Handlebars, and CSS for project development.",
+          subDescription: [ // Project descriptions
+            "Developed a fully functional Pacman game using Java...",
+            "Built a website to assist users in booking playgrounds...",
+            "Created a rental platform allowing New Jersey residents...",
+            "Designed an application for gamers to learn about and review video games...",
           ],
           imgSrc: "project.gif",
         },
+
+        // Contact section
         contact: {
-          subText: ["LinkedIn", "Phone number", "Email", "Address"],
-          subDescription: [
+          subText: ["LinkedIn", "Phone number", "Email", "Address"], // Contact labels
+          subDescription: [ // Actual contact information
             "https://www.linkedin.com/in/sripradha-v-bhat/",
             "201-736-5849",
             "sripradhavittalbhat@gmail.com",
@@ -119,39 +129,42 @@
         },
       };
 
+      // Expands the layout and reveals buttons + right section when user clicks anywhere in the left section
       leftSection.addEventListener("click", () => {
-        if (!body.classList.contains("expanded")) {
-          body.classList.add("expanded");
-          document.getElementById("buttonsContainer").style.display = "flex";
-          document.getElementById("rightSection").style.display = "flex";
+        if (!body.classList.contains("expanded")) { // If not already expanded
+          body.classList.add("expanded"); // Add expanded class to body for layout change
+          document.getElementById("buttonsContainer").style.display = "flex"; // Show buttons
+          document.getElementById("rightSection").style.display = "flex"; // Show right panel
         }
       });
 
+      // Function to render and display content dynamically based on button clicked
       function showContent(type) {
-        const item = content[type];
-        if (!item) return;
+        const item = content[type]; // Fetch content based on section
+        if (!item) return; // Exit if invalid section
 
-        // let html = `<h2 class="section-title">${item.title}</h2>`;
-
+        // Start HTML structure with image
         let html = `<img src="${item.imgSrc}" class="section-image" alt="${type} image" /><br/>`;
 
+        // Loop to generate accordion sections (collapsible)
         if (item.subTitile || item.subText) {
           for (let i = 0; i < (item.subTitile || item.subText).length; i++) {
-            const header = item.subTitile ? item.subTitile[i] : item.subText[i];
-            const sub = item.subTitile ? item.subText[i] : "";
+            const header = item.subTitile ? item.subTitile[i] : item.subText[i]; // Main heading
+            const sub = item.subTitile ? item.subText[i] : ""; // Subheading
             const score =
               item.subScore && item.subScore[i]
-                ? `<p><strong>GPA:</strong> ${item.subScore[i]}</p>`
+                ? `<p><strong>GPA:</strong> ${item.subScore[i]}</p>` // GPA (optional)
                 : "";
             const desc =
               item.subDescription && item.subDescription[i]
-                ? `<p>${item.subDescription[i]}</p>`
+                ? `<p>${item.subDescription[i]}</p>` // Description text
                 : "";
 
+            // Combine and add to HTML as accordion items
             html += `
-              <div class="accordion-item">
-                <button class="accordion-header">${header}</button>
-                <div class="accordion-content">
+              <div class="accordion-item"> <!-- Wrapper for each collapsible section -->
+                <button class="accordion-header">${header}</button> <!-- Clickable title -->
+                <div class="accordion-content"> <!-- Hidden content shown when clicked -->
                   ${sub ? `<p class="sub-text">${sub}</p>` : ""}
                   ${score}
                   ${desc}
@@ -160,22 +173,23 @@
           }
         }
 
+        // Inject final HTML into the page
         rightContent.innerHTML = html;
 
-        // Exclusive Accordion Logic
+        // Add accordion behavior (only one open at a time)
         const headers = document.querySelectorAll(".accordion-header");
 
         headers.forEach((header) => {
           header.addEventListener("click", () => {
-            const content = header.nextElementSibling;
+            const content = header.nextElementSibling; // Find related content div
             const isActive = content.classList.contains("active");
 
-            // Close all
+            // Close all active accordion sections
             document
               .querySelectorAll(".accordion-content")
               .forEach((c) => c.classList.remove("active"));
 
-            // Toggle the clicked one
+            // Toggle selected accordion
             if (!isActive) {
               content.classList.add("active");
             }
